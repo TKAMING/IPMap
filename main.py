@@ -7,3 +7,5 @@ world = folium.Map(
 world
 
 world.save('templates/index.html')
+#hello
+print("hello world")
