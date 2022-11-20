@@ -1,4 +1,4 @@
-# Ip location tracker
+# Ip location tracker (IPMap)
 a map that shows wireshark data in google maps ...
 
 ---
