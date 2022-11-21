@@ -1,12 +1,13 @@
 # Ip location tracker (IPMap)
-a map that shows wireshark data in google maps ...
+a map that shows Ip locations (80% right at the time)
 
 ---
 
 ToDo´s
 
-- [ ] The data visualization
-- [ ] Get wireshark data
+- [X] The data visualization
+- [ ] Get the ip´s
+- [ ] Error handling 
 - [ ] Design website 
 
 ---
