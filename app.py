@@ -8,14 +8,18 @@ from flask import Flask, render_template, redirect, request
 def ip_cordinates():
     response = requests.get("http://ip-api.com/json/" + ip).json()
 
-    global lat
-    lat = response['lat']
-    global lon
-    lon = response['lon']
+    if response == "":
+        print(f"[*] Error: Couldn´t find IP address ({ip}) location")
+    
+    else:
+        global lat
+        lat = response['lat']
+        global lon
+        lon = response['lon']
 
 # makes map
 def built_map():
-    map = folium.Map(zoom_start=12, control_scale=True)
+    map = folium.Map([lat, lon], zoom_start=12, control_scale=True)
     folium.CircleMarker([lat, lon], radius=50, popup="The radius the IP could be in").add_to(map)
     folium.Marker([lat, lon], popup='The IP you searched for', icon=folium.Icon(color="black")).add_to(map)
 
@@ -46,6 +50,7 @@ def index():
 @app.route("/map")
 def map():
     if request.method == "GET":
+        ip_cordinates()
         built_map()
         return render_template("map.html")
 
