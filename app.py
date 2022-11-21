@@ -6,10 +6,10 @@ from flask import Flask, render_template, redirect, request
 
 # makes map
 def built_map():
-    g = geocoder.ipinfo('192.168.178.56')
+    g = geocoder.ipinfo(form_ip)
     userip = g.latlng
     if userip == []:
-        print("[*] Error IP cordinates not found")
+        print("[*] Error IP cordinates not found" + form_ip)
         userip = [43.7001, -79.4163]
 
     map = folium.Map(location=userip, zoom_start=12, control_scale=True)
@@ -20,13 +20,6 @@ def built_map():
     map.save('templates/map.html')
 
 
-# get the ip and find cordinates
-#def FindIp(ip):
-#    g = geocoder.ipinfo(ip)
-#    ip_cordinates = g.latlng
-#    return ip_cordinates
-
-
 # flask processes
 app = Flask(__name__)
 
@@ -35,7 +28,8 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        ip = request.form.get("ip")
+        global form_ip
+        form_ip = request.form.get("ip")
 
         return redirect("/map") 
 
