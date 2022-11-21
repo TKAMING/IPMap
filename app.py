@@ -3,8 +3,6 @@
 import folium
 import geocoder
 from flask import Flask, render_template, redirect, request
-import tkinter
-from tkinter import messagebox
 
 # makes map
 def built_map():
