@@ -3,6 +3,7 @@
 import folium
 import requests
 from flask import Flask, render_template, redirect, request
+import json
 
 # gets ip cordinates
 def ip_cordinates():
