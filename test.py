@@ -1,8 +1,15 @@
 import folium
 import geocoder
+import requests
 
-g = geocoder.ipinfo('199.7.157.0')
-ip_cordinates = g.latlng
+ip = "192.168.178.56"
+
+response = requests.get("http://ip-api.com/json/" + ip).json()
+if response["status"] == "fail":
+    print(response)
+
+#g = geocoder.ipinfo('199.7.157.0')
+#ip_cordinates = g.latlng
 
 # get the ip and find cordinates
 #def FindIp(ip):
