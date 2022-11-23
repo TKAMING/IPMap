@@ -3,7 +3,7 @@ a map that shows Ip locations that are public or not protected
 
 ---
 
-How to run it?
+## How to run it?
 clone this repository
 
     git clone https://github.com/TKAMING/IPMap/
@@ -16,7 +16,8 @@ go to this url in your browser
   
     http://localhost:3000/
     
-and you are ready to go
+and you are ready to go...
+
 you should now see
 
 <img src"">
