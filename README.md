@@ -24,7 +24,12 @@ you should now see
 
 ---
 
-ToDo´s
+## Technologies used
+Python(Flask, folium), IP-api, HTML, CSS, Javascript
+
+---
+
+## ToDo´s
 
 - [X] The data visualization
 - [ ] Get the ip´s
