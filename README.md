@@ -17,6 +17,9 @@ go to this url in your browser
     http://localhost:3000/
     
 and you are ready to go
+you should now see
+
+<img src"">
 
 ---
 
