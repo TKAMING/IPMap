@@ -1,5 +1,5 @@
-# Ip location tracker (IPMap)
-a map that shows Ip locations (80% right at the time)
+# IPMap (Ip location tracker)
+a map that shows Ip locations that are public or not protected
 
 ---
 
