@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/static/media/blob1.svg" rel="icon">
 	<link rel="stylesheet" href="/static/css/styles.css">
     <title>IPMap: Get IP</title>
 </head>
@@ -11,12 +12,14 @@
     <main>
 		<section class="index">
 			<center>
-				<h1 class="space heading">
-					<a data-aos="fade-in" class="typewrite heading" data-period="2000" data-type='
-					[ "Welcome to IPMap", "A website to get IP Address locations", "It only works if the IP´s are public." ]'>
-					  <span class="wrap"></span>
-					</a>
-				</h1>
+				<div class="heading space">
+					<h1 class="">
+						<a data-aos="fade-in" class="typewrite heading" data-period="2000" data-type='
+						[ "Welcome to IPMap", "A website to get IP Address locations" ]'>
+						  <span class="wrap"></span>
+						</a>
+					</h1>
+				</div>
         		<form action="/" method="post" class="form">
 					<div data-aos="fade-in" class="contact-form box">
 						<div class="contact-input">
@@ -24,25 +27,34 @@
 						</div>
 
 						<div class="buttons">
-							<button class="blob-btn">
-								Submit IP address
-								<span class="blob-btn__inner">
-								  <span class="blob-btn__blobs">
-									<span class="blob-btn__blob"></span>
-									<span class="blob-btn__blob"></span>
-									<span class="blob-btn__blob"></span>
-									<span class="blob-btn__blob"></span>
-								  </span>
+							<button class="blob-btn" onclick="message()" type="submit">
+							  Submit IP address
+							  <span class="blob-btn__inner">
+								<span class="blob-btn__blobs">
+								  <span class="blob-btn__blob"></span>
+								  <span class="blob-btn__blob"></span>
+								  <span class="blob-btn__blob"></span>
+								  <span class="blob-btn__blob"></span>
 								</span>
-							  </button>
-						</div>
+							  </span>
+							</button>
+							<br/>
+
+							<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+								<defs>
+								  <filter id="goo">
+									<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+									<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+									<feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+								  </filter>
+								</defs>
+							  </svg>
 					</div>
         		</form>
 
-				<p class="space" style="color: rgb(150, 150, 150);">© 2022 Tobias Karuth (Tkaming)</p>
-
 			</center>
 		</section>
+		<center><p class="space" style="color: rgb(150, 150, 150);">© 2022 Tobias Karuth (Tkaming)</p></center>
     </main>
 
 	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>

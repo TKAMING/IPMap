@@ -58,6 +58,7 @@ def index():
             return redirect("/map") 
 
     else:
+        response = ""
         return render_template("index.html")
 
 #  ---------------------------------    MAP PAGE    -----------------------------------
@@ -87,6 +88,8 @@ def map():
         except:
             NameError
 
+        ip_cordinates()
+        built_map()
         return render_template("map.html")
 
 if __name__ == "__main__":
