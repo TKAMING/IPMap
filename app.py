@@ -36,9 +36,6 @@ def ip_cordinates():
 @CountCalls
 # makes map
 def built_map():
-    #all_files = glob.glob('templates/maps/*.html', recursive=True)
-    #for f in all_files:
-    #    os.remove(f)
 
     if response["status"] == "fail":
         print(f"[*] Error: Couldn´t generate map (No cordinates)")
