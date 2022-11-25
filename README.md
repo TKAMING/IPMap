@@ -20,7 +20,12 @@ and you are ready to go...
 
 you should now see
 
-<img src"">
+<img src="https://github.com/TKAMING/IPMap/blob/main/assets/IPMap_form.png">
+
+if you enter a valid IP address you should see
+
+
+<img src="https://github.com/TKAMING/IPMap/blob/main/assets/IPMap_map.png">
 
 ---
 
@@ -32,9 +37,9 @@ Python(Flask, folium), IP-api, HTML, CSS, Javascript
 ## ToDo´s
 
 - [X] The data visualization
-- [ ] Get the ip´s
+- [X] Get the ip´s
 - [ ] Error handling 
-- [ ] Design website 
+- [X] Design website 
 
 ---
 
