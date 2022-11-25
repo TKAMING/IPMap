@@ -2,8 +2,21 @@
 
 import folium
 import requests
+import os
+import glob
 from flask import Flask, render_template, redirect, request
 import json
+
+class CountCalls: 
+    def __init__(self, func): 
+        self._count = 0 
+        self._func = func 
+    def __call__( self, *args, **kwargs): 
+        self._count += 1 
+        return self._func(*args,**kwargs) 
+    @property 
+    def call_count(self): 
+        return self._count
 
 # gets ip cordinates
 def ip_cordinates():
@@ -20,8 +33,13 @@ def ip_cordinates():
         global lon
         lon = response['lon']
 
+@CountCalls
 # makes map
 def built_map():
+    #all_files = glob.glob('templates/maps/*.html', recursive=True)
+    #for f in all_files:
+    #    os.remove(f)
+
     if response["status"] == "fail":
         print(f"[*] Error: Couldn´t generate map (No cordinates)")
         return NameError
@@ -30,9 +48,11 @@ def built_map():
         map = folium.Map([lat, lon], zoom_start=12, control_scale=True)
         folium.CircleMarker([lat, lon], radius=50, popup="The radius the IP could be in").add_to(map)
         folium.Marker([lat, lon], popup='The IP you searched for', icon=folium.Icon(color="black")).add_to(map)
-
-    # save and display the map
-    map.save('templates/map.html')
+    
+    # create new map file 
+    with open(f"templates/maps/map{built_map.call_count}.html", 'w') as fp:
+        # save and display the map
+        map.save(f'templates/maps/map{built_map.call_count}.html')
 
 # flask processes
 app = Flask(__name__)
@@ -50,6 +70,14 @@ def after_request(response):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+        try:
+            # deletes the old map
+            print(f"[*] Removes old map.html files")
+            all_files = glob.glob('templates/maps/*.html', recursive=True)
+            for f in all_files:
+                os.remove(f)
+        except:
+            FileExistsError
         global ip
         ip = request.form.get("ip")
         if ip == "":
@@ -88,9 +116,7 @@ def map():
         except:
             NameError
 
-        ip_cordinates()
-        built_map()
-        return render_template("map.html")
+        return render_template(f"maps/map{built_map.call_count}.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
